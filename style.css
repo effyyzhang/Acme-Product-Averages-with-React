@@ -3,12 +3,12 @@ body {
     padding: 0;
     margin: 0;
   }
-  
+
   .selected {
     background-color: white;
     color: tomato;
   }
-  
+
   nav{
     background-color: tomato;
     padding: 2rem 2rem 0rem 2rem;
@@ -18,24 +18,31 @@ body {
       display: flex;
       margin-top: 2rem;
   }
-  
+
+  h2{
+    padding: 1rem 2rem;
+  }
+
   nav a{
     color: white;
     padding: 1rem 2rem;
     font-weight: 700;
     text-decoration: none;
     border-radius: 1rem 1rem 0 0;
-  
+
   }
-  
-  
+
+  span{
+    font-weight: 700;
+  }
+
   ul{
     padding: 0;
     list-style: none;
   }
-  
+
   li{
     padding-left: 2rem;
     margin-bottom: 2rem;
   }
-  
+
