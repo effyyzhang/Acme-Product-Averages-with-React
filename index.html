@@ -32,7 +32,7 @@ const Home = () => {
 
 
 const Product = ({products, offerings, companies}) => {
-    function getProductInfo(product){
+    function renderProduct(product){
         const targetOfferings = (offerings.filter(offering => (offering.productId === product.id)));
         const targetOfferingsPrice = targetOfferings.map(offering => offering.price);
         const offeringsCount = targetOfferings.length;
@@ -40,22 +40,22 @@ const Product = ({products, offerings, companies}) => {
         const minPrice = Math.min(...targetOfferingsPrice)
         const targetCompanyId = targetOfferings.find(offering => offering.price === minPrice).companyId
         const targetCompany = companies.find(company => (company.id === targetCompanyId)).name
-        console.log(targetCompany)
-        return {averagePrice, minPrice, targetCompany}
+
+        return (
+            <li>
+                <div><span>Product:</span> {product.name}</div>
+                <div><span>Suggested Price:</span> ${product.suggestedPrice.toFixed(2)}</div>
+                <div><span>Average Price:</span> ${averagePrice}</div>
+                <div><span>Lowest Price:</span> ${minPrice} offered by: {targetCompany}</div>
+            </li>
+        )
     }
 
     return(
         <div>
             <h2>Products</h2>
             <ul>
-                {products.map(product =>
-                    <li>
-                        <div><span>Product:</span> {product.name}</div>
-                        <div><span>Suggested Price:</span> ${product.suggestedPrice.toFixed(2)}</div>
-                        <div><span>Average Price:</span> ${getProductInfo(product).averagePrice}</div>
-                        <div><span>Lowest Price:</span> ${getProductInfo(product).minPrice} offered by: {getProductInfo(product).targetCompany}</div>
-                    </li>
-                    )}
+                {products.map(renderProduct)}
             </ul>
         </div>
 
